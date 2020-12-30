@@ -6,11 +6,35 @@
     <a href="https://twitter.com/laravelarticle"><img src="https://badgen.net/badge/twitter/@laravelarticle/1DA1F2?icon&label" /></a>
     <a href="https://facebook.com/laravelarticle"><img src="https://badgen.net/badge/facebook/laravelarticle/3b5998"/></a>
 </p>
-<p align="center">for Laravel 5/6/7</p>
+<h4 align="center">for Laravel 6/7/5</h4>
 <p align="center">Maintenance mode package for Laravel that support secret route!</p>
 
 ## Documentation
-Get documentation on [laravelarticle.com](https://laravelarticle.com/laravel-maintenance)
+Install
+```
+composer require haruncpi/laravel-maintenance
+```
+Replace middleware in `app/Http/Kernel.php`
+```php
+//\App\Http\Middleware\CheckForMaintenanceMode::class,
+\Haruncpi\LaravelMaintenance\Middleware\MaintenanceMode::class,
+```
+
+## Usage
+This package support all default maintenance mode features with maintenance bypass by secret route.
+
+ 
+##### Maintenance Bypass - Secret route
+```
+php artisan down --secret="mysecretkey"
+```
+
+##### Now you can bypass by secret route
+```
+https://example.com/mysecretkey
+```
+With this secret route, only you can access your website in live mode and the rest of the world get it in maintenance mode.
+
 
 ## Other Packages
 - [Laravel User Activity](https://github.com/haruncpi/laravel-user-activity) - Monitor application's user activity.
